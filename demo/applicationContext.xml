@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+       <!-- 1 配置数据源 -->
+       <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	       <!-- 数据库驱动 -->
+	       <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+	       <!-- 连接数据库的url -->
+	       <property name="url" value="jdbc:mysql://127.0.0.1:3306/testdatabase"/>
+	       <!-- 连接数据库的用户名 -->
+	       <property name="username" value="root"/>
+	       <!-- 连接数据库的密码 -->
+	       <property name="password" value="12345678"/>     
+       </bean>
+       <!-- 2配置JDBC模板 -->
+       <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+       		<!-- 默认必须使用数据源 -->
+       		<property name="dataSource" ref="dataSource"/>
+       </bean>
+       <bean id="accountDao" class="com.itheima.jdbc.AccountDaoImpl">
+       		<!-- 将jdbcTemplate注入到accountDao实例中 -->
+       		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+       </bean>
+       
+</beans>
