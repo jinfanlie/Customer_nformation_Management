@@ -1,0 +1,5 @@
+com/example/demo/Repository/MyRepository.class
+com/example/demo/contorll/MyController.class
+com/example/demo/entity/User.class
+com/example/demo/DemoApplication.class
+com/example/demo/service/MyService.class
